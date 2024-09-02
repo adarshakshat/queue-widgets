@@ -21,10 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
     playPauseBtnTwo.addEventListener("click", function () {
         if (audioPlayer2.paused) {
             audioPlayer2.play();
-            playPauseBtnTwo.src = "img/PlayButton.png";
+
+            playPauseBtnTwo.classList.remove('dashicons-controls-play');
+            playPauseBtnTwo.classList.add('dashicons-controls-pause');
         } else {
             audioPlayer2.pause();
-            playPauseBtnTwo.src = "img/PlayButton.png";
+
+            playPauseBtnTwo.classList.remove('dashicons-controls-pause');
+            playPauseBtnTwo.classList.add('dashicons-controls-play');
         }
     });
 

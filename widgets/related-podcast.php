@@ -145,7 +145,7 @@ class Related_Podcast extends Widget_Base{
                     </div>
 
                     <h3 class="cart-name"><?php echo esc_html($expert_name); ?></h3>
-                    <h3 class="cart-profession"><?php echo esc_html($expert_profession); ?></h3>
+                    <h4 class="cart-profession"><?php echo esc_html($expert_profession); ?></h4>
 
                     <p class="cart-description">
                         <?php echo wp_kses_post($podcast_desc); ?>
