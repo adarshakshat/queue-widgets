@@ -7,6 +7,8 @@
 
 body {
     font-family: 'Figtree', sans-serif;
+    background: linear-gradient(180deg, #F4D0D0 0%, #D8D4E3 100%);
+
 }
 
 .title,.expert-info,.quote,.highlight,.outlined-btn,.filled-btn,.AboutTitle,.AboutExpert-info,.listen-text,.episode-title,.profile-title,.profile-description,.filled-btnCall,.cart-name,.cart-profession,.cart-description{
