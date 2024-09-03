@@ -191,7 +191,8 @@ class Podcast_Content extends Widget_Base{
                             <span class="time-right" id="ap2-righttotalDuration">00:00</span>
                         </div>
                         <div class="playBtnID">
-                            <span id="playBtn" class="dashicons dashicons-controls-play"></span>
+<!--                            <span id="playBtn" class="dashicons dashicons-controls-play"></span>-->
+                            <span id="playBtn" class="play-btn"></span>
 
 <!--                            <img src="img/PlayButton.png" alt="play" class="playBtn">-->
                         </div>

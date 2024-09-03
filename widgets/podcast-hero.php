@@ -111,8 +111,63 @@ class Podcast_Hero extends Widget_Base{
         $settings = $this->get_settings_for_display();
         $badge_img = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/Badge.png' );
         $radio_img = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/radio.png' );
+        $bg1 = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/bg1.png' );
+        $bg2 = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/bg2.png' );
+        $play_btn = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/play_blue.svg' );
+        $pause_btn = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/pause_blue.svg' );
+
         ?>
-        <div class="container">
+
+            <style>
+                .play-btn,.pause-btn{
+                    margin-right:10px;
+                }
+                .play-btn {
+                    display:block;
+                    width: 50px;
+                    height: 50px; /* Adjust height as needed */
+                    background-image: url('<?php echo $play_btn; ?>'); /* Add your image URL here */
+                    background-size: contain; /* Ensure the image covers the entire container */
+                    background-position: center; /* Center the image */
+                    background-repeat: no-repeat; /* Prevent image from repeating */
+                }
+                .pause-btn {
+                    display:block;
+                    width: 50px;
+                    height: 50px; /* Adjust height as needed */
+                    background-image: url('<?php echo $pause_btn; ?>'); /* Add your image URL here */
+                    background-size: contain; /* Ensure the image covers the entire container */
+                    background-position: center; /* Center the image */
+                    background-repeat: no-repeat; /* Prevent image from repeating */
+                }
+                .bg1::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: url('<?php echo $bg1; ?>') no-repeat center center; /* Add your image URL here */
+                    background-size: cover; /* Ensures the image covers the entire container */
+                    z-index: -1; /* Ensures the background stays behind the content */
+                    opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */
+                    pointer-events: none; /* Prevent interaction with the pseudo-element */
+                }
+                .bg2::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: url('<?php echo $bg2; ?>') no-repeat center center; /* Add your image URL here */
+                    background-size: cover; /* Ensures the image covers the entire container */
+                    z-index: -1; /* Ensures the background stays behind the content */
+                    opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */
+                    pointer-events: none; /* Prevent interaction with the pseudo-element */
+                }
+            </style>
+        <div class="podcast-hero-container ">
             <div class="left-part">
                 <div class="image-wrapper">
                     <img src="<?php echo $settings['expert_image']['url']; ?>" alt="Big Image" class="big-image">
@@ -128,7 +183,8 @@ class Podcast_Hero extends Widget_Base{
 
                 <!-- Play/Pause Button and Progress Bar -->
                 <div class="audio-playertop">
-                    <span id="playPauseBtn" class="dashicons dashicons-controls-play"></span>
+<!--                    <span id="playPauseBtn" class="dashicons dashicons-controls-play"></span>-->
+                    <span id="playPauseBtn" class="play-btn"></span>
 <!--                    <img src="img/PauseCircle.png" alt="play" class="playPauseBtn">-->
                     <div class="progress-barMiddle">
                         <div id="progress" class="progressTop"></div>
@@ -141,8 +197,8 @@ class Podcast_Hero extends Widget_Base{
                 </div>
 
                 <div class="button-group">
-                    <button class="outlined-btn">Lister to full episode</button>
-                    <button class="filled-btn">Create your Own podcast</button>
+                    <div class="outlined-btn">Lister to full episode</div>
+                    <div class="filled-btn">Create your Own podcast</div>
                 </div>
             </div>
         </div>

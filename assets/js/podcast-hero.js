@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
     playPauseBtn.addEventListener("click", function () {
         if (audioPlayer.paused) {
             audioPlayer.play();
-            playPauseBtn.classList.remove('dashicons-controls-play');
-            playPauseBtn.classList.add('dashicons-controls-pause');
+            playPauseBtn.classList.remove('play-btn');
+            playPauseBtn.classList.add('pause-btn');
 
             // playPauseBtn.src = "img/PauseCircle.png"; // Change to Pause icon
         } else {
             audioPlayer.pause();
-            playPauseBtn.classList.remove('dashicons-controls-pause');
-            playPauseBtn.classList.add('dashicons-controls-play');
+            playPauseBtn.classList.remove('pause-btn');
+            playPauseBtn.classList.add('play-btn');
             // playPauseBtn.src = "img/PauseCircle.png"; // Change to Play icon
         }
     });

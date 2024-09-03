@@ -88,13 +88,13 @@ class Jessica_CTA extends Widget_Base{
 
     protected function render() {
         $settings = $this->get_settings_for_display();
-        $badge_img = esc_url( QU_ASSETS_URL . 'img/Badge.png');
+        $badge_img = esc_url( QU_ASSETS_URL . 'img/jessica.png');
         $schedule_call_btn_url = !empty($settings['schedule_call_btn_link']['url']) ? esc_url($settings['schedule_call_btn_link']['url']) : '#';
         ?>
         <div class="profile-container">
             <!-- Left Side: Profile Image in Circular Frame -->
             <div class="profile-image-container">
-                <img src="<?php echo $badge_img; ?>" alt="Profile Image" class="profile-image">
+                <img src="<?php echo $badge_img; ?>" alt="Profile Image" class="profile-image jessica-image">
             </div>
 
             <!-- Right Side: Text and Button -->

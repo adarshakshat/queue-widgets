@@ -127,18 +127,23 @@ class Related_Podcast extends Widget_Base{
                     <div class="swiper-wrapper">
         <?php
         if ($podcast_query->have_posts()) :
-
             while ($podcast_query->have_posts()) : $podcast_query->the_post();
+                $pid = get_the_ID();
                 $expert_image = get_the_post_thumbnail_url();
-                $expert_name = get_post_meta(get_the_ID(), 'expert_name', true);
-                $expert_profession = get_post_meta(get_the_ID(), 'expert_info', true);
-                $podcast_desc = get_post_meta(get_the_ID(), 'podcast_quote', true);
-                $audio_url = get_post_meta(get_the_ID(), 'highlight_audio_url', true);
+                $expert_name = get_post_meta($pid, 'expert_name', true);
+                $expert_profession = get_post_meta($pid, 'expert_info', true);
+                $podcast_desc = get_post_meta($pid, 'podcast_quote', true);
+                $audio_url = get_post_meta($pid, 'highlight_audio_url', true);
+                $thumbs_up = esc_url( QU_ASSETS_URL . 'img/thumbs-up.svg');
+                $thumbs_down = esc_url( QU_ASSETS_URL . 'img/thumbs-down.svg');
                 ?>
                 <div class="cart-item swiper-slide">
                     <div class="cart-icons">
-                        <span class="dashicons dashicons-thumbs-up"></span>
-                        <span class="dashicons dashicons-thumbs-down"></span>
+                        <img src="<?php echo esc_url($thumbs_up); ?>" alt="like" class=" ">
+                        <img src="<?php echo esc_url($thumbs_down); ?>" alt="dislike" class=" ">
+
+<!--                        <span class="dashicons dashicons-thumbs-up"></span>-->
+<!--                        <span class="dashicons dashicons-thumbs-down"></span>-->
                     </div>
                     <div class="cart-image">
                         <img src="<?php echo esc_url($expert_image); ?>" alt="Profile Image" class="profile-img">
@@ -151,7 +156,8 @@ class Related_Podcast extends Widget_Base{
                         <?php echo wp_kses_post($podcast_desc); ?>
                     </p>
                     <div class="audio-playertop">
-                        <span id="playPauseBtn4" class="dashicons dashicons-controls-play"></span>
+                        <span id="playPauseBtn<?php echo $pid; ?>" class="play-btn"></span>
+<!--                        <span id="playPauseBtn4" class="dashicons dashicons-controls-play"></span>-->
                         <div class="progress-barMiddle">
                             <div id="progress" class="progressTop"></div>
                         </div>

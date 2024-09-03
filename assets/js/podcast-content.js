@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (audioPlayer2.paused) {
             audioPlayer2.play();
 
-            playPauseBtnTwo.classList.remove('dashicons-controls-play');
-            playPauseBtnTwo.classList.add('dashicons-controls-pause');
+            playPauseBtnTwo.classList.remove('play-btn');
+            playPauseBtnTwo.classList.add('pause-btn');
         } else {
             audioPlayer2.pause();
 
-            playPauseBtnTwo.classList.remove('dashicons-controls-pause');
-            playPauseBtnTwo.classList.add('dashicons-controls-play');
+            playPauseBtnTwo.classList.remove('pause-btn');
+            playPauseBtnTwo.classList.add('play-btn');
         }
     });
 
