@@ -99,11 +99,11 @@ class Footer extends Widget_Base{
                 <!-- Column 1: About -->
                 <div class="footer-column">
                     <img src="<?php echo $footer_logo;?>" alt="Logo" class="logo-img">
-                    <p class="pragLogo">The platform that get you <br> your next client on Linkdin </p>
+                    <p class="pragLogo">The platform that's always on call --Jessica is your round-the-clock lead capture specialist.</p>
                 </div>
 
                 <!-- Column 2: Quick Links -->
-                <div class="footer-column">
+                <div class="footer-column hide-on-tablet">
                     <h3>Features</h3>
                     <ul>
                         <li><a href="#">Discussions</a></li>
@@ -117,9 +117,8 @@ class Footer extends Widget_Base{
 
                 <!-- Column 3: Contact Info -->
                 <div class="footer-column">
-                    <h3>Contact Us</h3>
+                    <h3>Learn More</h3>
                     <ul>
-                        <li><a href="#">Learn more</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Pricing</a></li>

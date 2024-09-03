@@ -115,7 +115,8 @@ class Podcast_Hero extends Widget_Base{
         $bg2 = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/bg2.png' );
         $play_btn = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/play_blue.svg' );
         $pause_btn = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/pause_blue.svg' );
-
+        $play_btn2 = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/PlayIconBig.svg' );
+        $pause_btn2 = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/PauseIconBig.svg' );
         ?>
 
             <style>
@@ -136,6 +137,24 @@ class Podcast_Hero extends Widget_Base{
                     width: 50px;
                     height: 50px; /* Adjust height as needed */
                     background-image: url('<?php echo $pause_btn; ?>'); /* Add your image URL here */
+                    background-size: contain; /* Ensure the image covers the entire container */
+                    background-position: center; /* Center the image */
+                    background-repeat: no-repeat; /* Prevent image from repeating */
+                }
+                .play-btn2 {
+                    display:block;
+                    width: 50px;
+                    height: 50px; /* Adjust height as needed */
+                    background-image: url('<?php echo $play_btn2; ?>'); /* Add your image URL here */
+                    background-size: contain; /* Ensure the image covers the entire container */
+                    background-position: center; /* Center the image */
+                    background-repeat: no-repeat; /* Prevent image from repeating */
+                }
+                .pause-btn2 {
+                    display:block;
+                    width: 50px;
+                    height: 50px; /* Adjust height as needed */
+                    background-image: url('<?php echo $pause_btn2; ?>'); /* Add your image URL here */
                     background-size: contain; /* Ensure the image covers the entire container */
                     background-position: center; /* Center the image */
                     background-repeat: no-repeat; /* Prevent image from repeating */

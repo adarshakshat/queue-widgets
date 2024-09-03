@@ -21,14 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
     playPauseBtnTwo.addEventListener("click", function () {
         if (audioPlayer2.paused) {
             audioPlayer2.play();
-
-            playPauseBtnTwo.classList.remove('play-btn');
-            playPauseBtnTwo.classList.add('pause-btn');
+            playPauseBtnTwo.classList.remove('play-btn2');
+            playPauseBtnTwo.classList.add('pause-btn2');
         } else {
             audioPlayer2.pause();
-
-            playPauseBtnTwo.classList.remove('pause-btn');
-            playPauseBtnTwo.classList.add('play-btn');
+            playPauseBtnTwo.classList.remove('pause-btn2');
+            playPauseBtnTwo.classList.add('play-btn2');
         }
     });
 

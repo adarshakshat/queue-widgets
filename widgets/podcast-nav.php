@@ -111,7 +111,7 @@ class Podcast_Nav extends Widget_Base{
         $menu_item_1_url = !empty($settings['menu_item_1_link']['url']) ? esc_url($settings['menu_item_1_link']['url']) : '#';
         $menu_item_2_url = !empty($settings['menu_item_2_link']['url']) ? esc_url($settings['menu_item_2_link']['url']) : '#';
         $schedule_btn_url = !empty($settings['schedule_btn_link']['url']) ? esc_url($settings['schedule_btn_link']['url']) : '#';
-        $logo_url = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/logo.svg' );
+        $logo_url = esc_url( QU_ASSETS_URL . 'img/logo.svg' );
         $profile_img = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/profile.png' );
         ?>
         <nav class="navbar">

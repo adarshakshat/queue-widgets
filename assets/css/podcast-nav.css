@@ -16,6 +16,22 @@ body {
     font-family: 'Figtree', sans-serif;
 }
 
+/*
+Utility
+*/
+@media screen and (max-width: 768px) {
+
+    .hide-on-tablet{
+        display:none;
+    }
+}
+.hide-on-mobile{
+
+}
+
+.hide-on-tablet{
+
+}
 /*Typography*/
 
 .title,.expert-info{
@@ -699,11 +715,10 @@ footer {
 
 /* Decrease the gap between Column 2 and Column 3 */
 .footer-column:nth-child(1) {
-
     min-width:50%;
-}.footer-column:nth-child(2) {
+}
+.footer-column:nth-child(2) {
     width:25%;
-
 }
 
 .footer-column:nth-child(3) {
@@ -824,6 +839,7 @@ footer {
     display:block;
     background:#EFF0F1;
     border-radius:50%;
+    margin-right:10px;
 }
 .footer-bottom-column li a :nth-child(1){
 
@@ -835,7 +851,132 @@ footer {
 ul.quick-link a{
     /*conflicts with elementor*/
     color:#EFF0F1 !important;
+    padding-right:0.1em;
 }
+
+
+
+@media only screen and (max-width: 480px) {
+
+}
+@media only screen and (max-width: 768px) {
+
+
+    .footer-container {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .footer-column {
+        min-width: 100%;
+    }
+
+    .footer-bottom-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-bottom-column {
+        min-width: 100%;
+    }
+
+    .footer-bottom .footer-bottom-column:nth-child(3) {
+        text-align:start;
+    }
+
+    footer {
+        border-radius: 30px;
+        margin: 5px;
+        padding: 20px 10px;
+    }
+
+    /* Footer Container */
+    .footer-container {
+        flex-direction: column;
+        gap: 30px; /* Reduced gap for smaller screens */
+    }
+
+    /* Adjust column spacing and alignment */
+    .footer-column {
+        min-width: 100%; /* Full width columns for mobile view */
+    }
+
+    /* Remove extra margins between columns */
+    .footer-column:nth-child(2),
+    .footer-column:nth-child(3) {
+        margin: 0;
+    }
+    .footer-column:nth-child(1) {
+        min-width:100%;
+        text-align:start;
+    }
+    .footer-column:nth-child(2) {
+    }
+    .footer-column:nth-child(3) {
+    }
+
+    /* Footer Links */
+    .footer-column ul {
+        padding: 0;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px; /* Maintain spacing between items */
+    }
+
+    .footer-column ul li a {
+        color: gray;
+        text-decoration: none;
+        transition: color 0.3s;
+        display: inline-block;
+        margin: 0 auto;
+    }
+    .footer-bottom{
+        flex-direction:row;
+    }
+
+    /* Social Media Icons */
+    .footer-column .social-icons {
+        justify-content: center; /* Center icons on mobile */
+        gap: 15px; /* Reduce gap between icons */
+    }
+
+    /* Footer Bottom Container */
+    .footer-bottom-container {
+        flex-direction: column; /* Stack footer bottom content vertically */
+        align-items: center; /* Center content */
+        gap: 20px; /* Reduced gap */
+    }
+
+    /* Footer Bottom Columns */
+    .footer-bottom-column {
+        min-width: 100%; /* Full width for each column */
+        margin-bottom: 15px; /* Add some space between columns */
+    }
+
+    .footer-bottom-column ul {
+        justify-content: start; /* Center items */
+        flex-direction: row; /* Stack items vertically */
+    }
+
+    .footer-bottom-column ul li {
+        margin-bottom: 10px; /* Maintain spacing between items */
+        padding-right: 0;
+    }
+
+    /* Adjust logo and paragraph alignment */
+    .logo-img,
+    .pragLogo {
+        margin: 0 auto;
+    }
+
+    /* Smaller circular icons */
+    .footer-bottom-column ul li a:nth-child(1) {
+
+    }
+}
+
+
 
 .ChatExpert {
     font-size: 12px;
@@ -1188,6 +1329,7 @@ ul.quick-link a{
     }
 
     .profile-image {
+        margin:0;
         margin-bottom: 20px;
         width: 200px;
         height: 200px;
@@ -1226,114 +1368,6 @@ ul.quick-link a{
 
 
 
-
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-column {
-        min-width: 100%;
-        text-align: center;
-    }
-
-    .footer-bottom-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-bottom-column {
-        min-width: 100%;
-        text-align: center;
-    }
-
-    footer {
-        border-radius: 30px;
-        margin: 5px;
-        padding: 20px 10px;
-    }
-
-    /* Footer Container */
-    .footer-container {
-        flex-direction: column;
-        gap: 30px; /* Reduced gap for smaller screens */
-    }
-
-    /* Adjust column spacing and alignment */
-    .footer-column {
-        min-width: 100%; /* Full width columns for mobile view */
-        text-align: center; /* Center text on mobile */
-    }
-
-    /* Remove extra margins between columns */
-    .footer-column:nth-child(2),
-    .footer-column:nth-child(3) {
-        margin: 0;
-    }
-
-    /* Footer Links */
-    .footer-column ul {
-        padding: 0;
-        text-align: center;
-    }
-
-    .footer-column ul li {
-        margin-bottom: 10px; /* Maintain spacing between items */
-    }
-
-    .footer-column ul li a {
-        color: gray;
-        text-decoration: none;
-        transition: color 0.3s;
-        display: inline-block;
-        margin: 0 auto;
-    }
-
-    /* Social Media Icons */
-    .footer-column .social-icons {
-        justify-content: center; /* Center icons on mobile */
-        gap: 15px; /* Reduce gap between icons */
-    }
-
-    /* Footer Bottom Container */
-    .footer-bottom-container {
-        flex-direction: column; /* Stack footer bottom content vertically */
-        align-items: center; /* Center content */
-        gap: 20px; /* Reduced gap */
-    }
-
-    /* Footer Bottom Columns */
-    .footer-bottom-column {
-        min-width: 100%; /* Full width for each column */
-        text-align: center; /* Center text */
-        margin-bottom: 15px; /* Add some space between columns */
-    }
-
-    .footer-bottom-column ul {
-        justify-content: center; /* Center items */
-        flex-direction: column; /* Stack items vertically */
-    }
-
-    .footer-bottom-column ul li {
-        margin-bottom: 10px; /* Maintain spacing between items */
-        padding-right: 0;
-    }
-
-    /* Adjust logo and paragraph alignment */
-    .logo-img,
-    .pragLogo {
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    /* Smaller circular icons */
-    .footer-bottom-column ul li a:nth-child(1) {
-        padding: 5px; /* Smaller padding for the circular effect */
-        width: 40px; /* Adjust width for smaller screens */
-        height: 40px; /* Adjust height for smaller screens */
-        font-size: 16px; /* Adjust font size for smaller screens */
-        line-height: 40px; /* Center content */
-    }
 
     .cart-item {
         width: 90%; /* Make the cart items take up more space on mobile */

@@ -192,7 +192,7 @@ class Podcast_Content extends Widget_Base{
                         </div>
                         <div class="playBtnID">
 <!--                            <span id="playBtn" class="dashicons dashicons-controls-play"></span>-->
-                            <span id="playBtn" class="play-btn"></span>
+                            <span id="playBtn" class="play-btn2"></span>
 
 <!--                            <img src="img/PlayButton.png" alt="play" class="playBtn">-->
                         </div>
