@@ -112,12 +112,14 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/podcast-content.php' );
 		require_once( __DIR__ . '/widgets/jessica-cta.php' );
 		require_once( __DIR__ . '/widgets/related-podcast.php' );
+		require_once( __DIR__ . '/widgets/footer.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Podcast_Nav() );
 		$widgets_manager->register( new Widgets\Podcast_Hero() );
 		$widgets_manager->register( new Widgets\Podcast_Content() );
 		$widgets_manager->register( new Widgets\Jessica_CTA() );
+		$widgets_manager->register( new Widgets\Footer() );
 		$widgets_manager->register( new Widgets\Related_Podcast() );
 	}
 

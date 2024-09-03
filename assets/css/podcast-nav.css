@@ -686,7 +686,7 @@ footer {
     margin: 10px;
     background-color: #000000;
     color: #fff;
-    padding: 40px 20px;
+    padding: 40px;
 }
 
 /* Footer Content */
@@ -698,12 +698,17 @@ footer {
 }
 
 /* Decrease the gap between Column 2 and Column 3 */
-.footer-column:nth-child(2) {
-    margin-left: 400px;/* Adjust this value to decrease the gap */
+.footer-column:nth-child(1) {
+
+    min-width:50%;
+}.footer-column:nth-child(2) {
+    width:25%;
+
 }
 
 .footer-column:nth-child(3) {
-    margin-right: 250px; /* Optional: You can set this to ensure no additional gap */
+
+    width:25%;
 }
 
 /* Footer Columns */
@@ -716,7 +721,7 @@ footer {
 .footer-column h3 {
     color: gray;
     font-size: 18px;
-
+    margin-top:0;
     margin-bottom: 15px;
     font-weight: 600;
 }
@@ -784,8 +789,6 @@ footer {
 /* Footer Bottom Columns */
 .footer-bottom-column {
     color: gray;
-    flex: 1;
-    min-width: 200px;
 }
 
 .footer-bottom-column ul {
@@ -801,34 +804,37 @@ footer {
 }
 
 .logo-img{
-    margin-bottom: 15px;
-    margin-left: 10px;
+    /*margin-bottom: 15px;*/
+    /*margin-left: 10px;*/
 }
 
 .pragLogo{
-    margin-left: 10px;
+    /*margin-left: 10px;*/
     line-height: 1.5;
 }
 
 .footer-bottom-column ul li a {
-    color: gray;
+    /*color: gray;*/
     text-decoration: none;
     transition: color 0.3s;
 }
-
+.footer-social-icons a{
+    height:28px !important;
+    width:28px !important;
+    display:block;
+    background:#EFF0F1;
+    border-radius:50%;
+}
 .footer-bottom-column li a :nth-child(1){
-    text-decoration: none;
-    display: inline-block;
-    background-color: #ccc; /* Gray background for the circular effect */
-    color: #333; /* Text color */
-    padding: 1px; /* Padding inside the circle */
-    width: 25px; /* Fixed width for the circle */
-    height: 22px; /* Fixed height for the circle */
-    border-radius: 50%; /* Makes the background circular */
-    text-align: center; /* Centers the text/icon horizontally */
-    line-height: 20px; /* Centers the text/icon vertically */
-    font-size: 18px; /* Font size for text */
+
     transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+.footer-bottom-column ul{
+    margin:0;
+}
+ul.quick-link a{
+    /*conflicts with elementor*/
+    color:#EFF0F1 !important;
 }
 
 .ChatExpert {
