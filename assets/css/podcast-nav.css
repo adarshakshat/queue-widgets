@@ -118,6 +118,7 @@ Buttons
     gap: 10px;
     display: flex;
     padding-top: 20px;
+	text-align:center;
 }
 
 
@@ -555,7 +556,6 @@ Buttons
 }
 
 .social-icons .icon {
-    margin-right: 15px;
     color: #007bff;
     font-size: 24px;
     transition: color 0.3s ease;
@@ -886,7 +886,9 @@ ul.quick-link a{
 
     footer {
         border-radius: 30px;
-        margin: 5px;
+        border-bottom-left-radius:0px;
+        border-bottom-right-radius:0px;
+        margin: 0px;
         padding: 20px 10px;
     }
 
@@ -979,7 +981,7 @@ ul.quick-link a{
 
 
 .ChatExpert {
-    font-size: 12px;
+    font-size: 16px;
     color: #333;
     /*margin-left: 10px;*/
 }
@@ -1000,6 +1002,7 @@ ul.quick-link a{
     display:flex;
     flex-direction:column;
     justify-content:space-between;
+	border: 1px solid #A4A09E;
 }
 
 .cart-icons {
@@ -1564,5 +1567,5 @@ ul.quick-link a{
 }
 
 .swiper-pagination-bullet-active {
-    background-color: var(--second-color);
+	background-color: var(--second-color);
 }

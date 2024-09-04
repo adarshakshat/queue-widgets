@@ -111,7 +111,7 @@ class Podcast_Nav extends Widget_Base{
         $menu_item_1_url = !empty($settings['menu_item_1_link']['url']) ? esc_url($settings['menu_item_1_link']['url']) : '#';
         $menu_item_2_url = !empty($settings['menu_item_2_link']['url']) ? esc_url($settings['menu_item_2_link']['url']) : '#';
         $schedule_btn_url = !empty($settings['schedule_btn_link']['url']) ? esc_url($settings['schedule_btn_link']['url']) : '#';
-        $logo_url = esc_url( QU_ASSETS_URL . 'img/logo.svg' );
+        $logo_url = esc_url( QU_ASSETS_URL . 'img/Logo.svg' );
         $profile_img = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/profile.png' );
         ?>
         <nav class="navbar">
@@ -126,7 +126,7 @@ class Podcast_Nav extends Widget_Base{
             </div>
             <div class="nav-bottom">
                 <span class="ChatExpert">Do you want to become an expert?<span class="chathighlight"> Chat  with Jessica!🎙</span></span>
-                <button class="schedule-btn"><a href="<?php echo $schedule_btn_url; ?>"> Schedule Call</a></button>
+				<button class="schedule-btn"><a href="<?php echo $schedule_btn_url; ?>"><?php echo $settings['schedule_btn_text']; ?> </a></button>
                 <img src="<?php echo $profile_img; ?>" alt="Profile" class="profile-icon">
             </div>
         </nav>
