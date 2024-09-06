@@ -185,6 +185,32 @@ class Podcast_Hero extends Widget_Base{
                     opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */
                     pointer-events: none; /* Prevent interaction with the pseudo-element */
                 }
+                .bg1::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: url('<?php echo $bg1; ?>') no-repeat center center; /* Add your image URL here */
+                    background-size: cover; /* Ensures the image covers the entire container */
+                    z-index: -1; /* Ensures the background stays behind the content */
+                    opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */
+                    pointer-events: none; /* Prevent interaction with the pseudo-element */
+                }
+                .bg2::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: url('<?php echo $bg2; ?>') no-repeat center center; /* Add your image URL here */
+                    background-size: cover; /* Ensures the image covers the entire container */
+                    z-index: -1; /* Ensures the background stays behind the content */
+                    opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */
+                    pointer-events: none; /* Prevent interaction with the pseudo-element */
+                }
             </style>
         <div class="podcast-hero-container ">
             <div class="left-part">

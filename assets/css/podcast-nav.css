@@ -3,7 +3,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap');
 
-
+@media
 
 body {
     font-family: 'Figtree', sans-serif;
@@ -128,10 +128,10 @@ Buttons
     padding: 10px 20px;
     border-radius: 25px;
     border:1px solid;
+    cursor: pointer;
 }
 
 .filled-btn {
-
     background-color: #0E24D6;
     color: white;
     padding: 10px 20px;
@@ -314,8 +314,8 @@ Buttons
 
 .image-wrapper {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 451px;
+    height: 421px;
     margin: 0 auto;
 }
 
@@ -340,8 +340,8 @@ Buttons
     height: 49px;
     border-radius: 50%;
     position: absolute;
-    top: 263px;
-    left: 44px;
+    top: 390px;
+    left: 75px;
 }
 
 /* Right Part with Text Content */
@@ -382,14 +382,18 @@ Buttons
 .highlight {
     font-size: 16px;
     cursor: pointer;
+    margin:0;
 }
-
+p.Sec{
+    margin:0;
+}
 
 /* Play/Pause Button and Progress Bar */
 .audio-playertop {
     display: flex;
     align-items: center;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
+    width:100%;
 }
 
 .play-pause-btn {
@@ -411,7 +415,7 @@ Buttons
     margin-right: 10px;
 }
 .progress-barMiddle {
-    width: 350px;
+    width: 100%;
     height: 4px;
     overflow: hidden;
     background-color: #e0e0e0;
@@ -421,7 +425,7 @@ Buttons
 }
 
 .time-Duration{
-    width:398px;
+    width:100%;
 }
 
 
@@ -813,9 +817,11 @@ footer {
 }
 
 .footer-bottom-column ul li {
-    padding-right: 20px;
     margin-bottom: 0px;
 
+}
+ul.quick-link li{
+	padding-right:10px;
 }
 
 .logo-img{
@@ -836,10 +842,11 @@ footer {
 .footer-social-icons a{
     height:28px !important;
     width:28px !important;
-    display:block;
+    display:flex;
     background:#EFF0F1;
     border-radius:50%;
     margin-right:10px;
+	padding:6px;
 }
 .footer-bottom-column li a :nth-child(1){
 
@@ -1274,6 +1281,8 @@ ul.quick-link a{
 
 
     .image-wrapper {
+        height:331px;
+        width:361px;
         position: relative;
         display: inline-block;
     }
@@ -1565,7 +1574,12 @@ ul.quick-link a{
     background-color: hsl(212, 32%, 40%);
     opacity: 1;
 }
+.footer-container h3{
+	font-family: 'Figtree', sans-serif;
 
+}
 .swiper-pagination-bullet-active {
 	background-color: var(--second-color);
 }
+
+

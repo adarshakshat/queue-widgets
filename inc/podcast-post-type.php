@@ -113,57 +113,6 @@ class Podcast_Post_Type {
         ]);
     }
 
-
-    public static function set_featured_image_from_url($post_id, $image_url) {
-        // Check if the URL is not empty
-        if (!empty($image_url)) {
-            // Download the image file to the server
-            require_once(ABSPATH . 'wp-admin/includes/file.php');
-
-            $temp_file = download_url($image_url);
-
-            // If there's an error in downloading the image, stop the process
-            if (is_wp_error($temp_file)) {
-                return;
-            }
-
-            // Extract the file name and file type from the URL
-            $file = [
-                'name'     => basename($image_url),
-                'type'     => mime_content_type($temp_file),
-                'tmp_name' => $temp_file,
-                'error'    => 0,
-                'size'     => filesize($temp_file),
-            ];
-
-            // Handle the file upload in WordPress
-            $sideload = wp_handle_sideload($file, ['test_form' => false]);
-
-            // If the upload fails, stop the process and delete the temp file
-            if (!empty($sideload['error'])) {
-                @unlink($temp_file); // Delete the temporary file
-                return;
-            }
-
-            // Insert the image into the media library
-            $attachment_id = wp_insert_attachment([
-                'guid'           => $sideload['url'],
-                'post_mime_type' => $sideload['type'],
-                'post_title'     => sanitize_file_name($file['name']),
-                'post_content'   => '',
-                'post_status'    => 'inherit',
-            ], $sideload['file'], $post_id);
-
-            // Generate the attachment's metadata
-            require_once(ABSPATH . 'wp-admin/includes/image.php');
-            $attachment_data = wp_generate_attachment_metadata($attachment_id, $sideload['file']);
-            wp_update_attachment_metadata($attachment_id, $attachment_data);
-
-            // Set the image as the featured image for the post
-            set_post_thumbnail($post_id, $attachment_id);
-        }
-    }
-
     public function create_podcast($data) {
         $params = $data->get_params();
 
@@ -179,9 +128,7 @@ class Podcast_Post_Type {
         if (is_wp_error($post_id)) {
             return new WP_Error('cant-create', __('Unable to create podcast'), ['status' => 500]);
         }
-        if (!is_wp_error($post_id) && !empty($params['featured_image_url'])) {
-            $this->set_featured_image_from_url($post_id, esc_url_raw($params['featured_image_url']));
-        }
+
         // Handle taxonomies
         if (isset($params['industry'])) {
             wp_set_object_terms($post_id, intval($params['industry']), 'industry');
@@ -249,11 +196,66 @@ class Podcast_Post_Type {
         if (isset($params['linkedin_link'])) {
             update_post_meta($post_id, 'linkedin_link', esc_url_raw($params['linkedin_link']));
         }
+        if (isset($params['highlight_list']) && is_array($params['highlight_list'])) {
+            $highlight_list = array_map('sanitize_text_field', $params['highlight_list']);
+            update_post_meta($post_id, 'highlight_list', $highlight_list);
+        }
+        if (!is_wp_error($post_id) && !empty($params['featured_image_url'])) {
+            $this->set_featured_image_from_url($post_id, esc_url_raw($params['featured_image_url']));
+        }
 
 
         return new WP_REST_Response(['post_id' => $post_id], 200);
     }
+    public static function set_featured_image_from_url($post_id, $image_url) {
+        // Check if the URL is not empty
+        if (!empty($image_url)) {
+            // Download the image file to the server
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
 
+            $temp_file = download_url($image_url);
+
+            // If there's an error in downloading the image, stop the process
+            if (is_wp_error($temp_file)) {
+                return;
+            }
+
+            // Extract the file name and file type from the URL
+            $file = [
+                'name'     => basename($image_url),
+                'type'     => mime_content_type($temp_file),
+                'tmp_name' => $temp_file,
+                'error'    => 0,
+                'size'     => filesize($temp_file),
+            ];
+
+            // Handle the file upload in WordPress
+            $sideload = wp_handle_sideload($file, ['test_form' => false]);
+
+            // If the upload fails, stop the process and delete the temp file
+            if (!empty($sideload['error'])) {
+                @unlink($temp_file); // Delete the temporary file
+                return;
+            }
+
+            // Insert the image into the media library
+            $attachment_id = wp_insert_attachment([
+                'guid'           => $sideload['url'],
+                'post_mime_type' => $sideload['type'],
+                'post_title'     => sanitize_file_name($file['name']),
+                'post_content'   => '',
+                'post_status'    => 'inherit',
+            ], $sideload['file'], $post_id);
+
+            // Generate the attachment's metadata
+            require_once(ABSPATH . 'wp-admin/includes/image.php');
+            $attachment_data = wp_generate_attachment_metadata($attachment_id, $sideload['file']);
+            wp_update_attachment_metadata($attachment_id, $attachment_data);
+
+            // Set the image as the featured image for the post
+            set_post_thumbnail($post_id, $attachment_id);
+        }
+    }
     public function initialize_cmb2_fields() {
         $cmb = new_cmb2_box([
             'id'            => 'podcast_metabox',
@@ -340,6 +342,16 @@ class Podcast_Post_Type {
             'id'   => 'linkedin_link',
             'type' => 'text_url',
         ]);
+        $cmb->add_field( array(
+            'name'       => __( 'Highlight List', 'cmb2' ),
+            'id'         => 'highlight_list',
+            'type'       => 'text',
+            'repeatable' => true,
+            'description'=> 'Add the highlight items here. You can add as many as needed.',
+            'options'    => array(
+                'add_row_text' => 'Add Highlight', // Text for the "add" button
+            ),
+        ) );
     }
 }
 

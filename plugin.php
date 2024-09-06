@@ -1,4 +1,5 @@
 <?php
+
 namespace ElementorHelloWorld;
 
 use ElementorHelloWorld\PageSettings\Page_Settings;
@@ -9,162 +10,176 @@ use ElementorHelloWorld\PageSettings\Page_Settings;
  * Main Plugin class
  * @since 1.2.0
  */
-class Plugin {
+class Plugin
+{
 
-	/**
-	 * Instance
-	 *
-	 * @since 1.2.0
-	 * @access private
-	 * @static
-	 *
-	 * @var Plugin The single instance of the class.
-	 */
-	private static $_instance = null;
+    /**
+     * Instance
+     *
+     * @since 1.2.0
+     * @access private
+     * @static
+     *
+     * @var Plugin The single instance of the class.
+     */
+    private static $_instance = null;
 
-	/**
-	 * Instance
-	 *
-	 * Ensures only one instance of the class is loaded or can be loaded.
-	 *
-	 * @since 1.2.0
-	 * @access public
-	 *
-	 * @return Plugin An instance of the class.
-	 */
-	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
-		}
-		return self::$_instance;
-	}
-
-	/**
-	 * widget_scripts
-	 *
-	 * Load required plugin core files.
-	 *
-	 * @since 1.2.0
-	 * @access public
-	 */
-	public function widget_scripts() {
-		wp_register_script( 'elementor-hello-world', plugins_url( '/assets/js/hello-world.js', __FILE__ ), [ 'jquery' ], false, true );
-		wp_register_script( 'swiper-js', plugins_url( '/assets/js/swiper-bundle.min.js', __FILE__ ) );
-		wp_register_script( 'related-podcast-js', plugins_url( '/assets/js/related-podcast.js', __FILE__ ), [ 'swiper-js' ], false, true );
-		wp_register_script( 'podcast-hero-js', plugins_url( '/assets/js/podcast-hero.js', __FILE__ ), true );
-		wp_register_script( 'podcast-content-js', plugins_url( '/assets/js/podcast-content.js', __FILE__ ), true );
-	}
-
-	/**
-	 * Editor scripts
-	 *
-	 * Enqueue plugin javascripts integrations for Elementor editor.
-	 *
-	 * @since 1.2.1
-	 * @access public
-	 */
-	public function editor_scripts() {
-		add_filter( 'script_loader_tag', [ $this, 'editor_scripts_as_a_module' ], 10, 2 );
-
-		wp_enqueue_script(
-			'elementor-hello-world-editor',
-			plugins_url( '/assets/js/editor/editor.js', __FILE__ ),
-			[
-				'elementor-editor',
-			],
-			'1.2.1',
-			true
-		);
-	}
-
-	/**
-	 * Force load editor script as a module
-	 *
-	 * @since 1.2.1
-	 *
-	 * @param string $tag
-	 * @param string $handle
-	 *
-	 * @return string
-	 */
-	public function editor_scripts_as_a_module( $tag, $handle ) {
-		if ( 'elementor-hello-world-editor' === $handle ) {
-			$tag = str_replace( '<script', '<script type="module"', $tag );
-		}
-
-		return $tag;
-	}
-
-	/**
-	 * Register Widgets
-	 *
-	 * Register new Elementor widgets.
-	 *
-	 * @since 1.2.0
-	 * @access public
-	 *
-	 * @param Widgets_Manager $widgets_manager Elementor widgets manager.
-	 */
-	public function register_widgets( $widgets_manager ) {
-		// Its is now safe to include Widgets files
-		require_once( __DIR__ . '/widgets/podcast-nav.php' );
-		require_once( __DIR__ . '/widgets/podcast-hero.php' );
-		require_once( __DIR__ . '/widgets/podcast-content.php' );
-		require_once( __DIR__ . '/widgets/jessica-cta.php' );
-		require_once( __DIR__ . '/widgets/related-podcast.php' );
-		require_once( __DIR__ . '/widgets/footer.php' );
-
-		// Register Widgets
-		$widgets_manager->register( new Widgets\Podcast_Nav() );
-		$widgets_manager->register( new Widgets\Podcast_Hero() );
-		$widgets_manager->register( new Widgets\Podcast_Content() );
-		$widgets_manager->register( new Widgets\Jessica_CTA() );
-		$widgets_manager->register( new Widgets\Footer() );
-		$widgets_manager->register( new Widgets\Related_Podcast() );
-	}
-
-	/**
-	 * Add page settings controls
-	 *
-	 * Register new settings for a document page settings.
-	 *
-	 * @since 1.2.1
-	 * @access private
-	 */
-	private function add_page_settings_controls() {
-		require_once( __DIR__ . '/page-settings/manager.php' );
-		new Page_Settings();
-	}
-
-
-    function register_widget_styles() {
-        wp_register_style( 'podcast-nav', plugins_url( 'assets/css/podcast-nav.css', __FILE__ ) );
+    /**
+     * Instance
+     *
+     * Ensures only one instance of the class is loaded or can be loaded.
+     *
+     * @return Plugin An instance of the class.
+     * @since 1.2.0
+     * @access public
+     *
+     */
+    public static function instance()
+    {
+        if (is_null(self::$_instance)) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
     }
 
-	/**
-	 *  Plugin class constructor
-	 *
-	 * Register plugin action hooks and filters
-	 *
-	 * @since 1.2.0
-	 * @access public
-	 */
-	public function __construct() {
+    /**
+     * widget_scripts
+     *
+     * Load required plugin core files.
+     *
+     * @since 1.2.0
+     * @access public
+     */
+    public function widget_scripts()
+    {
+        wp_register_script('elementor-hello-world', plugins_url('/assets/js/hello-world.js', __FILE__), ['jquery'], false, true);
+        wp_register_script('swiper-js', plugins_url('/assets/js/swiper-bundle.min.js', __FILE__));
+        wp_register_script('related-podcast-js', plugins_url('/assets/js/related-podcast.js', __FILE__), ['swiper-js'], false, true);
+        wp_register_script('takeaway-expander', plugins_url('/assets/js/takeaway-expander.js', __FILE__), ['jquery'], false, true);
+        wp_register_script('podcast-hero-js', plugins_url('/assets/js/podcast-hero.js', __FILE__), true);
+        wp_register_script('podcast-content-js', plugins_url('/assets/js/podcast-content.js', __FILE__), true);
+    }
+
+    /**
+     * Editor scripts
+     *
+     * Enqueue plugin javascripts integrations for Elementor editor.
+     *
+     * @since 1.2.1
+     * @access public
+     */
+    public function editor_scripts()
+    {
+        add_filter('script_loader_tag', [$this, 'editor_scripts_as_a_module'], 10, 2);
+
+        wp_enqueue_script(
+            'elementor-hello-world-editor',
+            plugins_url('/assets/js/editor/editor.js', __FILE__),
+            [
+                'elementor-editor',
+            ],
+            '1.2.1',
+            true
+        );
+    }
+
+    /**
+     * Force load editor script as a module
+     *
+     * @param string $tag
+     * @param string $handle
+     *
+     * @return string
+     * @since 1.2.1
+     *
+     */
+    public function editor_scripts_as_a_module($tag, $handle)
+    {
+        if ('elementor-hello-world-editor' === $handle) {
+            $tag = str_replace('<script', '<script type="module"', $tag);
+        }
+
+        return $tag;
+    }
+
+    /**
+     * Register Widgets
+     *
+     * Register new Elementor widgets.
+     *
+     * @param Widgets_Manager $widgets_manager Elementor widgets manager.
+     * @since 1.2.0
+     * @access public
+     *
+     */
+    public function register_widgets($widgets_manager)
+    {
+        // Its is now safe to include Widgets files
+        require_once(__DIR__ . '/widgets/podcast-nav.php');
+        require_once(__DIR__ . '/widgets/podcast-hero.php');
+        require_once(__DIR__ . '/widgets/podcast-content.php');
+        require_once(__DIR__ . '/widgets/jessica-cta.php');
+        require_once(__DIR__ . '/widgets/related-podcast.php');
+        require_once(__DIR__ . '/widgets/footer.php');
+        require_once(__DIR__ . '/widgets/podcast-list.php');
+        require_once(__DIR__ . '/assets-css.php');
+
+        // Register Widgets
+        $widgets_manager->register(new Widgets\Podcast_Nav());
+        $widgets_manager->register(new Widgets\Podcast_Hero());
+        $widgets_manager->register(new Widgets\Podcast_Content());
+        $widgets_manager->register(new Widgets\Jessica_CTA());
+        $widgets_manager->register(new Widgets\Footer());
+        $widgets_manager->register(new Widgets\Related_Podcast());
+        $widgets_manager->register(new Widgets\Podcast_List());
+    }
+
+    /**
+     * Add page settings controls
+     *
+     * Register new settings for a document page settings.
+     *
+     * @since 1.2.1
+     * @access private
+     */
+    private function add_page_settings_controls()
+    {
+        require_once(__DIR__ . '/page-settings/manager.php');
+        new Page_Settings();
+    }
 
 
-        add_action( 'wp_enqueue_scripts',[ $this, 'register_widget_styles' ] );
+    function register_widget_styles()
+    {
+        wp_register_style('podcast-nav', plugins_url('assets/css/podcast-nav.css', __FILE__));
+        wp_register_style('podcast-list', plugins_url('assets/css/podcast-list.css', __FILE__));
+    }
 
-		// Register widget scripts
-		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'widget_scripts' ] );
+    /**
+     *  Plugin class constructor
+     *
+     * Register plugin action hooks and filters
+     *
+     * @since 1.2.0
+     * @access public
+     */
+    public function __construct()
+    {
 
-		// Register widgets
-		add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
 
-		// Register editor scripts
-		add_action( 'elementor/editor/after_enqueue_scripts', [ $this, 'editor_scripts' ] );
+        add_action('wp_enqueue_scripts', [$this, 'register_widget_styles']);
 
-		$this->add_page_settings_controls();
-	}
+        // Register widget scripts
+        add_action('elementor/frontend/after_register_scripts', [$this, 'widget_scripts']);
+
+        // Register widgets
+        add_action('elementor/widgets/register', [$this, 'register_widgets']);
+
+        // Register editor scripts
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'editor_scripts']);
+
+        $this->add_page_settings_controls();
+    }
 }
 
 // Instantiate Plugin Class
