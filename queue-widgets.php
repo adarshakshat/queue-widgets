@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Queue Custom Widgets
+ * Plugin Name: Queue Custom Widgets for Podcasts
  * Description: For Queue
- * Plugin URI:  https://elementor.com/
- * Version:     1.2.1
+ * Plugin URI:
+ * Version:     1.0.0
  * Author:      Adarsh Akshat
  * Author URI:  https://elementor.com/
- * Text Domain: elementor-hello-world
+ * Text Domain: queue-widgets
  * Elementor tested up to: 3.5.0
  * Elementor Pro tested up to: 3.5.0
  */
@@ -118,9 +118,9 @@ final class Elementor_Hello_World {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'elementor-hello-world' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-hello-world' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'elementor-hello-world' ) . '</strong>'
+			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'queue-widgets' ),
+			'<strong>' . esc_html__( 'Elementor Hello World', 'queue-widgets' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'queue-widgets' ) . '</strong>'
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
@@ -141,9 +141,9 @@ final class Elementor_Hello_World {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-hello-world' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-hello-world' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'elementor-hello-world' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'queue-widgets' ),
+			'<strong>' . esc_html__( 'Elementor Hello World', 'queue-widgets' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'queue-widgets' ) . '</strong>',
 			self::MINIMUM_ELEMENTOR_VERSION
 		);
 
@@ -165,9 +165,9 @@ final class Elementor_Hello_World {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-hello-world' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-hello-world' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'elementor-hello-world' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'queue-widgets' ),
+			'<strong>' . esc_html__( 'Elementor Hello World', 'queue-widgets' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'queue-widgets' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);
 

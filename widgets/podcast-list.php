@@ -15,7 +15,7 @@ class Podcast_List extends Widget_Base{
     }
 
     public function get_title() {
-        return __( 'Podcast List', 'elementor-hello-world' );
+        return __( 'Podcast List', 'queue-widgets' );
     }
     public function get_icon() {
         return 'eicon-posts-ticker';
@@ -204,9 +204,9 @@ class Podcast_List extends Widget_Base{
                 ?>
                 <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/').'podcast'); ?>">
                     <label>
-                        <input type="search" class="search-field" placeholder="<?php echo esc_attr__('Search Posts...', 'plugin-name'); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+                        <input type="search" class="search-field" placeholder="<?php echo esc_attr__('Search Posts...', 'queue-widgets'); ?>" value="<?php echo get_search_query(); ?>" name="s" />
                     </label>
-                    <button type="submit" class="search-submit"><?php echo esc_attr__('Search', 'plugin-name'); ?>
+                    <button type="submit" class="search-submit"><?php echo esc_attr__('Search', 'queue-widgets'); ?>
                     <?php echo $search_icon; ?></button>
                 </form>
             <?php endwhile;
@@ -280,9 +280,9 @@ class Podcast_List extends Widget_Base{
                 <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/').'podcast'); ?>">
 
                     <div class="search-form">
-                        <input id="podcast-search" type="search" class="search-field" placeholder="<?php echo esc_attr__('Search Posts...', 'plugin-name'); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+                        <input id="podcast-search" type="search" class="search-field" placeholder="<?php echo esc_attr__('Search Posts...', 'queue-widgets'); ?>" value="<?php echo get_search_query(); ?>" name="s" />
                         <button type="submit" class="search-submit">
-<!--                                --><?php //echo esc_attr__('Search', 'plugin-name'); ?>
+<!--                                --><?php //echo esc_attr__('Search', 'queue-widgets'); ?>
                                 <?php echo $search_icon; ?>
 
                         </button>
@@ -524,7 +524,7 @@ class Podcast_List extends Widget_Base{
 
                 // Reset post data
             } else {
-                echo __( 'No posts found', 'plugin-name' );
+                echo __( 'No posts found', 'queue-widgets' );
             }
             wp_reset_postdata();
         }

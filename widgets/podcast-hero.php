@@ -15,7 +15,7 @@ class Podcast_Hero extends Widget_Base{
     }
 
     public function get_title() {
-        return __( 'Podcast Hero', 'elementor-hello-world' );
+        return __( 'Podcast Hero', 'queue-widgets' );
     }
     public function get_icon() {
         return 'eicon-posts-ticker';
@@ -24,7 +24,7 @@ class Podcast_Hero extends Widget_Base{
         return [ 'general' ];
     }
     public function get_script_depends() {
-        return [ 'elementor-hello-world','podcast-hero-js' ];
+        return [ 'queue-widgets','podcast-hero-js' ];
     }
     public function get_style_depends() {
         return [ 'podcast-nav' ];
@@ -42,9 +42,9 @@ class Podcast_Hero extends Widget_Base{
         $this->add_control(
             'podcast_title',
             [
-                'label' => __( 'Title', 'plugin-name' ),
+                'label' => __( 'Title', 'queue-widgets' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Title 1', 'plugin-name' ),
+                'default' => __( 'Title 1', 'queue-widgets' ),
                 'label_block' => true,
                 'dynamic' => [
                     'active' => true,
@@ -55,9 +55,9 @@ class Podcast_Hero extends Widget_Base{
         $this->add_control(
             'expert_info',
             [
-                'label' => __( 'Expert Info', 'plugin-name' ),
+                'label' => __( 'Expert Info', 'queue-widgets' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Name and role of the expert', 'plugin-name' ),
+                'default' => __( 'Name and role of the expert', 'queue-widgets' ),
                 'label_block' => true,
                 'dynamic' => [
                     'active' => true,
@@ -82,9 +82,9 @@ class Podcast_Hero extends Widget_Base{
         $this->add_control(
             'quote',
             [
-                'label' => __( 'Quote', 'plugin-name' ),
+                'label' => __( 'Quote', 'queue-widgets' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( '" Quote', 'plugin-name' ),
+                'default' => __( '" Quote', 'queue-widgets' ),
                 'label_block' => true,
                 'dynamic' => [
                     'active' => true,
@@ -158,58 +158,6 @@ class Podcast_Hero extends Widget_Base{
                     background-size: contain; /* Ensure the image covers the entire container */
                     background-position: center; /* Center the image */
                     background-repeat: no-repeat; /* Prevent image from repeating */
-                }
-                .bg1::after {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: url('<?php echo $bg1; ?>') no-repeat center center; /* Add your image URL here */
-                    background-size: cover; /* Ensures the image covers the entire container */
-                    z-index: -1; /* Ensures the background stays behind the content */
-                    opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */
-                    pointer-events: none; /* Prevent interaction with the pseudo-element */
-                }
-                .bg2::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: url('<?php echo $bg2; ?>') no-repeat center center; /* Add your image URL here */
-                    background-size: cover; /* Ensures the image covers the entire container */
-                    z-index: -1; /* Ensures the background stays behind the content */
-                    opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */
-                    pointer-events: none; /* Prevent interaction with the pseudo-element */
-                }
-                .bg1::after {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: url('<?php echo $bg1; ?>') no-repeat center center; /* Add your image URL here */
-                    background-size: cover; /* Ensures the image covers the entire container */
-                    z-index: -1; /* Ensures the background stays behind the content */
-                    opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */
-                    pointer-events: none; /* Prevent interaction with the pseudo-element */
-                }
-                .bg2::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: url('<?php echo $bg2; ?>') no-repeat center center; /* Add your image URL here */
-                    background-size: cover; /* Ensures the image covers the entire container */
-                    z-index: -1; /* Ensures the background stays behind the content */
-                    opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */
-                    pointer-events: none; /* Prevent interaction with the pseudo-element */
                 }
             </style>
         <div class="podcast-hero-container ">

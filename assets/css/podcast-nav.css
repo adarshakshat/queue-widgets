@@ -12,6 +12,9 @@ body {
 
 }
 
+body{
+    background:linear-gradient(180deg, #E5EAFF 0%, #EED9DC 100%);
+}
 .title,.expert-info,.quote,.highlight,.outlined-btn,.filled-btn,.AboutTitle,.AboutExpert-info,.listen-text,.episode-title,.profile-title,.profile-description,.filled-btnCall,.cart-name,.cart-profession,.cart-description{
     font-family: 'Figtree', sans-serif;
 }

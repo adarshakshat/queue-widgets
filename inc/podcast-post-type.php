@@ -7,8 +7,30 @@ class Podcast_Post_Type {
         add_action('init', [$this, 'register_podcast_taxonomies']);
         add_action('rest_api_init', [$this, 'register_podcast_rest_routes']);
         add_action('cmb2_admin_init', [$this, 'initialize_cmb2_fields']); // Add CMB2 fields
+        add_action('init', [$this, 'custom_cpt_rewrite_rule']); // Add CMB2 fields
+        add_action('post_type_link', [$this, 'custom_cpt_permalink'],80,2);
+    }
+    function custom_cpt_rewrite_rule() {
+        add_rewrite_rule(
+            '^([^/]+)/([^/]+)/?$',
+            'index.php?podcast=$matches[2]&post_type=podcast',
+            'top'
+        );
     }
 
+    function custom_cpt_permalink($post_link, $post) {
+        if ($post->post_type === 'podcast') {
+            // Get the custom field value
+            $expert_name = get_post_meta($post->ID, 'expert_name', true);
+
+            // Replace %custom_field% in the permalink with the actual custom field value
+            if ($expert_name) {
+                $expert_name_slug = strtolower(str_replace(' ', '-', $expert_name));
+                $post_link = home_url( '/' . $expert_name_slug . '/' . $post->post_name . '/' );
+            }
+        }
+        return $post_link;
+    }
     public function register_podcast_post_type() {
         $labels = [
             'name'               => _x('Podcasts', 'post type general name'),
@@ -36,7 +58,7 @@ class Podcast_Post_Type {
             'show_in_menu'       => true,
             'query_var'          => true,
             'capability_type'    => 'post',
-            'has_archive'        => true,
+            'has_archive'        => false,
             'hierarchical'       => false,
             'menu_position'      => null,
             'supports'           => ['title', 'author', 'thumbnail'],
@@ -117,7 +139,7 @@ class Podcast_Post_Type {
 
         $postarr = [
             'post_title'    => sanitize_text_field($params['title']),
-            'post_status'   => 'publish',
+            'post_status'   => 'draft',
             'post_type'     => 'podcast',
             'meta_input'    => [],
         ];
@@ -179,10 +201,10 @@ class Podcast_Post_Type {
         if (isset($params['expert_about'])) {
             update_post_meta($post_id, 'expert_about', sanitize_textarea_field($params['expert_about']));
         }
-
-        if (isset($params['expert_image'])) {
-            update_post_meta($post_id, 'expert_image', esc_url_raw($params['expert_image']));
+        if (isset($params['expert_role'])) {
+            update_post_meta($post_id, 'expert_role', sanitize_textarea_field($params['expert_role']));
         }
+
 
         if (isset($params['audio_title'])) {
             update_post_meta($post_id, 'audio_title', sanitize_text_field($params['audio_title']));
@@ -295,24 +317,11 @@ class Podcast_Post_Type {
             'id'   => 'expert_about',
             'type' => 'textarea_small',
         ]);
-        $cmb->add_field( array(
-            'name'    => 'Expert Image',
-            'desc'    => 'Upload an image or enter an URL.',
-            'id'      => 'expert_image',
-            'type'    => 'file',
-            'text'    => array(
-                'add_upload_file_text' => 'Add Image' // Change upload button text. Default: "Add or Upload File"
-            ),
-            // query_args are passed to wp.media's library query.
-            'query_args' => array(
-                 'type' => array(
-                     'image/gif',
-                     'image/jpeg',
-                     'image/png',
-                 ),
-            ),
-            'preview_size' => 'large', // Image size to use when previewing in the admin.
-        ) );
+        $cmb->add_field([
+            'name' => __('Expert Role', 'cmb2'),
+            'id'   => 'expert_role',
+            'type' => 'textarea_small',
+        ]);
         $cmb->add_field([
             'name' => __('Audio Title', 'cmb2'),
             'id'   => 'audio_title',

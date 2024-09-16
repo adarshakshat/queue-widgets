@@ -81,7 +81,7 @@ class Plugin
      */
     public function widget_scripts()
     {
-        wp_register_script('elementor-hello-world', plugins_url('/assets/js/hello-world.js', __FILE__), ['jquery'], false, true);
+        wp_register_script('queue-widgets', plugins_url('/assets/js/hello-world.js', __FILE__), ['jquery'], false, true);
         wp_register_script('swiper-js', plugins_url('/assets/js/swiper-bundle.min.js', __FILE__));
         wp_register_script('related-podcast-js', plugins_url('/assets/js/related-podcast.js', __FILE__), ['swiper-js'], false, true);
         wp_register_script('takeaway-expander', plugins_url('/assets/js/takeaway-expander.js', __FILE__), ['jquery'], false, true);
@@ -109,7 +109,7 @@ class Plugin
         add_filter('script_loader_tag', [$this, 'editor_scripts_as_a_module'], 10, 2);
 
         wp_enqueue_script(
-            'elementor-hello-world-editor',
+            'queue-widgets-editor',
             plugins_url('/assets/js/editor/editor.js', __FILE__),
             [
                 'elementor-editor',
@@ -131,7 +131,7 @@ class Plugin
      */
     public function editor_scripts_as_a_module($tag, $handle)
     {
-        if ('elementor-hello-world-editor' === $handle) {
+        if ('queue-widgets-editor' === $handle) {
             $tag = str_replace('<script', '<script type="module"', $tag);
         }
 
@@ -159,7 +159,6 @@ class Plugin
         require_once(__DIR__ . '/widgets/footer.php');
         require_once(__DIR__ . '/widgets/podcast-list.php');
         require_once(__DIR__ . '/widgets/podcast-list-hero.php');
-        require_once(__DIR__ . '/widgets/podcast-list-card.php');
         require_once(__DIR__ . '/assets-css.php');
 
         // Register Widgets
@@ -171,7 +170,6 @@ class Plugin
         $widgets_manager->register(new Widgets\Related_Podcast());
         $widgets_manager->register(new Widgets\Podcast_List());
         $widgets_manager->register(new Widgets\Podcast_List_Hero());
-        $widgets_manager->register(new Widgets\Podcast_List_Card());
     }
 
     /**

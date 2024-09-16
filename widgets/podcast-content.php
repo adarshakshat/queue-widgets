@@ -15,7 +15,7 @@ class Podcast_Content extends Widget_Base{
     }
 
     public function get_title() {
-        return __( 'Podcast Content', 'elementor-hello-world' );
+        return __( 'Podcast Content', 'queue-widgets' );
     }
     public function get_icon() {
         return 'eicon-posts-ticker';
@@ -24,7 +24,7 @@ class Podcast_Content extends Widget_Base{
         return [ 'general' ];
     }
     public function get_script_depends() {
-        return [ 'elementor-hello-world','podcast-content-js' ];
+        return [ 'queue-widgets','podcast-content-js' ];
     }
     public function get_style_depends() {
         return [ 'podcast-nav','dashicons' ];
@@ -143,12 +143,6 @@ class Podcast_Content extends Widget_Base{
 
     protected function render() {
         $settings = $this->get_settings_for_display();
-        $menu_item_1_url = !empty($settings['menu_item_1_link']['url']) ? esc_url($settings['menu_item_1_link']['url']) : '#';
-        $menu_item_2_url = !empty($settings['menu_item_2_link']['url']) ? esc_url($settings['menu_item_2_link']['url']) : '#';
-        $schedule_btn_url = !empty($settings['schedule_btn_link']['url']) ? esc_url($settings['schedule_btn_link']['url']) : '#';
-        $logo_url = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/logo.png' );
-        $profile_img = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/profile.png' );
-        $radio_img = esc_url( plugin_dir_url( __FILE__ ) . '../assets/img/radio.png' );
 		$twitter = '
 <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="2.5" y="2" width="28" height="28" rx="14" fill="black"/>
@@ -172,19 +166,11 @@ class Podcast_Content extends Widget_Base{
 ';
         ?>
         <div class="container podcast-content">
-            <!-- Left Side with Floating Label Input -->
             <div class="left-side">
                 <div class="floating-label">
                     <h1 class="title">In this episode</h1>
                     <p class="podcast-desc"><?php echo $settings['description']; ?></p>
-
-
                 </div>
-<!--                <div class="expert-infoTime" >-->
-<!--                    <p class="infoTime"> <span>00:01 - 02:00</span> <span> - </span> answer for the question  </p>-->
-<!--                    <p class="infoTime"> <span>00:01 - 02:00</span> <span> - </span> answer for the question  </p>-->
-<!--                    <p class="infoTime"> <span>00:01 - 02:00</span> <span> - </span> answer for the question  </p>-->
-<!--                </div>-->
             </div>
 
             <!-- Right Side Input -->
@@ -200,14 +186,11 @@ class Podcast_Content extends Widget_Base{
                         <a href="<?php echo $settings['twitter_link']['url']; ?>" target="_blank" class="icon">
 							<?php echo $twitter ; ?>
 						</a>
-
                     </div>
-<!--                    <p class="AboutSocial">Add more Social Networks </p>-->
                 </div>
                 <div class ="lister-episode">
                     <span class="listen-text">Listen to full episode:</span>
                     <span class="episode-title"><?php echo $settings['audio_title']; ?></span>
-
                     <div class="audio-player">
                         <div class="progress-bar">
                             <div id="ap2-progress" class="progress"></div>
@@ -217,18 +200,13 @@ class Podcast_Content extends Widget_Base{
                             <span class="time-right" id="ap2-righttotalDuration">00:00</span>
                         </div>
                         <div class="playBtnID">
-<!--                            <span id="playBtn" class="dashicons dashicons-controls-play"></span>-->
                             <span id="playBtn" class="play-btn2"></span>
-
-<!--                            <img src="img/PlayButton.png" alt="play" class="playBtn">-->
                         </div>
                         <audio id="audioPlayer2" src="<?php echo $settings['audio_link']['url']; ?>"></audio>
-
                     </div>
                 </div>
             </div>
         </div>
-
         <?php
     }
 }

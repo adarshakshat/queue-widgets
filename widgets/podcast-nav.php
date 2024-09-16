@@ -15,7 +15,7 @@ class Podcast_Nav extends Widget_Base{
     }
 
     public function get_title() {
-        return __( 'Podcast Navigation', 'elementor-hello-world' );
+        return __( 'Podcast Navigation', 'queue-widgets' );
     }
     public function get_icon() {
         return 'eicon-posts-ticker';
@@ -24,7 +24,7 @@ class Podcast_Nav extends Widget_Base{
         return [ 'general' ];
     }
     public function get_script_depends() {
-        return [ 'elementor-hello-world' ];
+        return [ 'queue-widgets' ];
     }
     public function get_style_depends() {
         return [ 'podcast-nav' ];

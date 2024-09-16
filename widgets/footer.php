@@ -14,7 +14,7 @@ class Footer extends Widget_Base{
     }
 
     public function get_title() {
-        return __( 'Footer Podcast', 'elementor-hello-world' );
+        return __( 'Footer Podcast', 'queue-widgets' );
     }
     public function get_icon() {
         return 'eicon-person';
@@ -23,7 +23,7 @@ class Footer extends Widget_Base{
         return [ 'general' ];
     }
     public function get_script_depends() {
-        return [ 'elementor-hello-world' ];
+        return [ 'queue-widgets' ];
     }
     public function get_style_depends() {
         return [ 'podcast-nav' ];

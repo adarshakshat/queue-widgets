@@ -15,7 +15,7 @@ class Podcast_List_Hero extends Widget_Base{
     }
 
     public function get_title() {
-        return __( 'Podcast List Hero', 'elementor-hello-world' );
+        return __( 'Podcast List Hero', 'queue-widgets' );
     }
     public function get_icon() {
         return 'eicon-posts-ticker';

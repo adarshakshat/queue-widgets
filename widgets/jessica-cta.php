@@ -15,7 +15,7 @@ class Jessica_CTA extends Widget_Base{
     }
 
     public function get_title() {
-        return __( 'Jessica CTA', 'elementor-hello-world' );
+        return __( 'Jessica CTA', 'queue-widgets' );
     }
     public function get_icon() {
         return 'eicon-person';
@@ -24,7 +24,7 @@ class Jessica_CTA extends Widget_Base{
         return [ 'general' ];
     }
     public function get_script_depends() {
-        return [ 'elementor-hello-world' ];
+        return [ 'queue-widgets' ];
     }
     public function get_style_depends() {
         return [ 'podcast-nav' ];
