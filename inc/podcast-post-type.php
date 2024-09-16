@@ -35,7 +35,6 @@ class Podcast_Post_Type {
             'menu_icon'            => 'dashicons-microphone',
             'show_in_menu'       => true,
             'query_var'          => true,
-            'rewrite'            => ['slug' => 'podcast'],
             'capability_type'    => 'post',
             'has_archive'        => true,
             'hierarchical'       => false,

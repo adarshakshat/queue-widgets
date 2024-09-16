@@ -42,6 +42,35 @@ class Plugin
         return self::$_instance;
     }
 
+    function search_taxonomy_terms() {
+        $taxonomy = isset($_GET['taxonomy']) ? sanitize_text_field($_GET['taxonomy']) : '';
+        $search_term = isset($_GET['search']) ? sanitize_text_field($_GET['search']) : 'industry';
+
+        if (!$taxonomy || !$search_term) {
+            wp_send_json_error('Invalid search.');
+            wp_die();
+        }
+
+        $terms = get_terms(array(
+            'taxonomy' => $taxonomy,
+            'search' => $search_term,
+            'hide_empty' => false,
+        ));
+
+        $results = array();
+        if (!empty($terms) && !is_wp_error($terms)) {
+            foreach ($terms as $term) {
+                $results[] = array(
+                    'id' => $term->term_id, // Send term ID
+                    'text' => $term->name,   // Display term name in the select2 dropdown
+                );
+            }
+        }
+
+        wp_send_json($results);
+        wp_die();
+    }
+
     /**
      * widget_scripts
      *
@@ -58,6 +87,13 @@ class Plugin
         wp_register_script('takeaway-expander', plugins_url('/assets/js/takeaway-expander.js', __FILE__), ['jquery'], false, true);
         wp_register_script('podcast-hero-js', plugins_url('/assets/js/podcast-hero.js', __FILE__), true);
         wp_register_script('podcast-content-js', plugins_url('/assets/js/podcast-content.js', __FILE__), true);
+        wp_register_script('podcast-list-js', plugins_url('/assets/js/podcast-list.js', __FILE__), true);
+        wp_register_script('podcast-list-player', plugins_url('/assets/js/podcast-list-player.js', __FILE__), true);
+        wp_enqueue_script( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ) );
+        wp_register_script('search', plugins_url('/assets/js/search.js', __FILE__), true);
+        wp_localize_script('search', 'ajax_object', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+        ));
     }
 
     /**
@@ -122,6 +158,8 @@ class Plugin
         require_once(__DIR__ . '/widgets/related-podcast.php');
         require_once(__DIR__ . '/widgets/footer.php');
         require_once(__DIR__ . '/widgets/podcast-list.php');
+        require_once(__DIR__ . '/widgets/podcast-list-hero.php');
+        require_once(__DIR__ . '/widgets/podcast-list-card.php');
         require_once(__DIR__ . '/assets-css.php');
 
         // Register Widgets
@@ -132,6 +170,8 @@ class Plugin
         $widgets_manager->register(new Widgets\Footer());
         $widgets_manager->register(new Widgets\Related_Podcast());
         $widgets_manager->register(new Widgets\Podcast_List());
+        $widgets_manager->register(new Widgets\Podcast_List_Hero());
+        $widgets_manager->register(new Widgets\Podcast_List_Card());
     }
 
     /**
@@ -151,8 +191,10 @@ class Plugin
 
     function register_widget_styles()
     {
+        wp_enqueue_style( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' );
         wp_register_style('podcast-nav', plugins_url('assets/css/podcast-nav.css', __FILE__));
         wp_register_style('podcast-list', plugins_url('assets/css/podcast-list.css', __FILE__));
+        wp_register_style('podcast-list-hero', plugins_url('assets/css/podcast-list-hero.css', __FILE__));
     }
 
     /**
@@ -165,6 +207,9 @@ class Plugin
      */
     public function __construct()
     {
+
+        add_action('wp_ajax_search_taxonomy_terms', [$this, 'search_taxonomy_terms'] );
+        add_action('wp_ajax_nopriv_search_taxonomy_terms', [$this, 'search_taxonomy_terms'] );
 
 
         add_action('wp_enqueue_scripts', [$this, 'register_widget_styles']);

@@ -1,85 +1,55 @@
 <?php
-
-
-$cardbg1 = esc_url( plugin_dir_url( __FILE__ ) . '/assets/img/cardbg1.png' );
-$cardbg2 = esc_url( plugin_dir_url( __FILE__ ) . '/assets/img/cardbg2.png' );
-$cardbg3 = esc_url( plugin_dir_url( __FILE__ ) . '/assets/img/cardbg3.png' );
-
 ?>
 
 
 <style>
-/**/
-/*    .cardbg1::after{*/
-/*        content: "";*/
-/*        position: absolute;*/
-/*        top: 0;*/
-/*        left: 0;*/
-/*        right: 0;*/
-/*        bottom: 0;*/
-/*        background: url('*/<?php //echo $cardbg1; ?>/*') no-repeat center center; /* Add your image URL here */*/
-/*        background-size: cover; /* Ensures the image covers the entire container */*/
-/*        z-index: -1; /* Ensures the background stays behind the content */*/
-/*        opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */*/
-/*        pointer-events: none; /* Prevent interaction with the pseudo-element */*/
-/**/
-/*    }*/
-/**/
-/*    .cardbg2::after{*/
-/*        content: "";*/
-/*        position: absolute;*/
-/*        top: 0;*/
-/*        left: 0;*/
-/*        right: 0;*/
-/*        bottom: 0;*/
-/*        background: url('*/<?php //echo $cardbg2; ?>/*') no-repeat center center; /* Add your image URL here */*/
-/*        background-size: cover; /* Ensures the image covers the entire container */*/
-/*        z-index: -1; /* Ensures the background stays behind the content */*/
-/*        opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */*/
-/*        pointer-events: none; /* Prevent interaction with the pseudo-element */*/
-/**/
-/*    }*/
-/**/
-/*    .cardbg3::after{*/
-/*        content: "";*/
-/*        position: absolute;*/
-/*        top: 0;*/
-/*        left: 0;*/
-/*        right: 0;*/
-/*        bottom: 0;*/
-/*        background: url('*/<?php //echo $cardbg3; ?>/*') no-repeat center center; /* Add your image URL here */*/
-/*        background-size: cover; /* Ensures the image covers the entire container */*/
-/*        z-index: -1; /* Ensures the background stays behind the content */*/
-/*        opacity: 0.5; /* Optional: adjust the opacity to create a blend effect */*/
-/*        pointer-events: none; /* Prevent interaction with the pseudo-element */*/
-/**/
-/*    }*/
 
-.podcast-list:nth-child(1){
+.podcast-list article:nth-child(1){
+    background: linear-gradient(90deg, #FAFAFA 30.2%, #EEF4D5 113.33%);
+}
+.podcast-list article:nth-child(2){
+    background:linear-gradient(90deg, #FAFAFA 30.2%, #FFE1DD 113.33%);
 
 }
-.cardbg1{
-    background: url('<?php echo $cardbg1; ?>') no-repeat center center; /* Add your image URL here */
-    background-size:cover;
-    background-position: bottom;
+.podcast-list article:nth-child(3){
+    background:linear-gradient(90deg, #FAFAFA 30.2%, #D5DCEF 113.33%);
 }
-.cardbg2{
-    background: url('<?php echo $cardbg2; ?>') no-repeat center center; /* Add your image URL here */
-    background-size:contain;
-    background-position-y: bottom;
-    background-position-x: unset;
-    background-repeat:repeat-y;
-}
-.cardbg3{
-    background-size:contain;
+.podcast-list article:nth-child(4){
+    background: linear-gradient(90deg, #FAFAFA 30.2%, #EEF4D5 113.33%);
 
-    background: url('<?php echo $cardbg3; ?>') no-repeat center center; /* Add your image URL here */
-    background-position-y: bottom;
-    background-position-x: unset;
-    background-repeat:repeat-y;
+}
+.podcast-list article:nth-child(5){
+    background:linear-gradient(90deg, #FAFAFA 30.2%, #FFE1DD 113.33%);
+
+}
+.podcast-list article:nth-child(6){
+    background:linear-gradient(90deg, #FAFAFA 30.2%, #D5DCEF 113.33%);
+
+}
+
+.podcast-list article:nth-child(7){
+    background: linear-gradient(90deg, #FAFAFA 30.2%, #EEF4D5 113.33%);
+
 }
 
 
+.podcast-list article:nth-child(8){
+    background:linear-gradient(90deg, #FAFAFA 30.2%, #FFE1DD 113.33%);
+
+}
+
+.podcast-list article:nth-child(9){
+    background:linear-gradient(90deg, #FAFAFA 30.2%, #D5DCEF 113.33%);
+
+}
+
+.podcast-list article:nth-child(10){
+    background: linear-gradient(90deg, #FAFAFA 30.2%, #EEF4D5 113.33%);
+
+}
+body{
+    background:linear-gradient(180deg, #E5EAFF 0%, #EED9DC 100%);
+}
 </style>
 
 

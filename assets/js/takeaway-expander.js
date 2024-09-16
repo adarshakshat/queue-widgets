@@ -14,6 +14,7 @@ console.log(lists)
         // Add click event listener to each icon
         icons.forEach(function(icon, index) {
             icon.addEventListener('click', function() {
+                icon.classList.toggle('turn');
                 const correspondingList = lists[index]; // Get the corresponding ol for this icon
                 // Toggle the display of the corresponding takeaway list
                 if (correspondingList.style.display === 'none' || correspondingList.style.display === '') {
